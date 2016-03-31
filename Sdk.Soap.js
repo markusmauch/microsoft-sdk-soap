@@ -876,7 +876,7 @@
                 /// The value to set
                 ///</param>
 
-                /* MM: Allows to reset Lookup Attribute */
+                /* <MODIFICATION> */
                 //if ( value instanceof Sdk.EntityReference )
                 if ( value === null || value instanceof Sdk.EntityReference )
                 {
@@ -1594,7 +1594,7 @@
                 /// <param name="targetRecords" type="Sdk.Collection">
                 /// The collection of relationship records that were added or removed. 
                 ///</param>
-                _setValidX( targetRecords );
+                _setValidTargetRecords( targetRecords );
             }
         }
         this.RelationshipAuditDetail.__class = true;
@@ -2119,24 +2119,6 @@
             };
 
             // <BEGIN MODIFICATION>
-
-            //this.contains = function ( item )
-            //{
-            //    ///<summary>
-            //    /// Returns whether an object exists within the collection.
-            //    ///</summary>
-            //    ///<param name="item" type="Object">
-            //    ///  The item must be a reference to the same object.
-            //    ///</param>
-            //    for ( var i = 0; i < _objects.length; i++ )
-            //    {
-            //        if ( item === _objects[i] )
-            //        {
-            //            return true;
-            //        }
-            //    }
-            //    return false;
-            //};
 
             this.contains = function ( args )
             {
@@ -5425,7 +5407,7 @@
             return entity;
         }
 
-        /* MM: escape illegal XML characters */
+        /* <MODIFICATION> escape illegal XML characters */
         this.escapeXml = function ( xml )
         {
             return xml.replace( /[<>&'"]/g, function ( c )
@@ -5566,7 +5548,7 @@
                     _canBeChanged = ( Sdk.Xml.selectSingleNodeText( valueNode, "a:CanBeChanged" ) == "true" ) ? true : false;
                     _managedPropertyLogicalName = Sdk.Xml.selectSingleNodeText( valueNode, "a:ManagedPropertyLogicalName" );
                     _bmpValue = ( Sdk.Xml.selectSingleNodeText( valueNode, "a:Value" ) == "true" ) ? true : false;
-                    return new Sdk.BooleanManagedProperty( logicalName, new Sdk.BooleanManagedPropertyValue( _canBeChanged, _managedPropertyLogicalName, _bmpValue ) );
+                    return new Sdk.BooleanManagedProperty( logicalName, new Sdk.BooleanManagedPropertyValue( _canBeChanged, _bmpValue, _managedPropertyLogicalName ) );
                     break;
                 case "EntityCollection":
                     return new Sdk.PartyList( logicalName, Sdk.Util.createEntityCollectionFromNode( valueNode ) );
@@ -5620,7 +5602,7 @@
                             _aCanBeChanged = ( Sdk.Xml.selectSingleNodeText( aliasedValueNode, "a:CanBeChanged" ) == "true" ) ? true : false;
                             _aManagedPropertyLogicalName = Sdk.Xml.selectSingleNodeText( aliasedValueNode, "a:ManagedPropertyLogicalName" );
                             _aBmpValue = ( Sdk.Xml.selectSingleNodeText( aliasedValueNode, "a:Value" ) == "true" ) ? true : false;
-                            return new Sdk.BooleanManagedProperty( logicalName, new Sdk.BooleanManagedPropertyValue( _aCanBeChanged, _aManagedPropertyLogicalName, _aBmpValue ) );
+                            return new Sdk.BooleanManagedProperty( logicalName, new Sdk.BooleanManagedPropertyValue( _aCanBeChanged, _aBmpValue, _aManagedPropertyLogicalName ) );
                             break;
                         case "EntityCollection":
                             return new Sdk.PartyList( logicalName, Sdk.Util.createEntityCollectionFromNode( aliasedValueNode ) );
@@ -11410,7 +11392,7 @@
             }
             else
             {
-                /* MM: escape xml */
+                /* <MODIFIATION> escape xml */
                 xml.push( "<a:Name>" + Sdk.Util.escapeXml( this.getValue().getName() ) + "</a:Name>" );
             }
 
