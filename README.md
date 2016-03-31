@@ -1,5 +1,5 @@
 # microsoft-sdk-soap
-This project is a fork of the Microsoft Dynamics CRM Sdk.Soap.js library (https://code.msdn.microsoft.com/SdkSoapjs-9b51b99a) with support for Universal Module Definition (https://github.com/umdjs/umd).
+This project is a fork of the Microsoft Dynamics CRM Sdk.Soap.js library (https://code.msdn.microsoft.com/SdkSoapjs-9b51b99a) with support for Universal Module Definition (https://github.com/umdjs/umd). This is especially useful in a AMD loaded environment (e.g. RequireJS).
 
 ## Further Improvements
 
