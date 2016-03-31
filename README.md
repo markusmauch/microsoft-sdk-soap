@@ -15,17 +15,33 @@ There is a TypeScript definition available: https://github.com/DefinitelyTyped/D
 
 ## Usage
 
+### Module name setup
+
+    require.config( {
+        paths: {
+            // Core library
+            "Sdk": "<FilePath>/Sdk.Soap",
+            
+            // Optional message plug-ins
+            "Sdk.RetrieveMetadataChanges": "<FilePath>/Sdk.RetrieveMetadataChanges",
+            "Sdk.SetState": "<FilePath>/Sdk.SetState",
+            ...
+        }
+    } );
+
+### Module loading
+
     define( ["Sdk"], function( Sdk )
     {
-      var query = new Sdk.Query.QueryByAttribute( "account" );
-      query.addColumn( "name" );
-      query.addAttributeValue( new Sdk.String( "accountnumber", "12345" ) );
-      Sdk.Q.retrieveMultiple( query );
+        var query = new Sdk.Query.QueryByAttribute( "account" );
+        query.addColumn( "name" );
+        query.addAttributeValue( new Sdk.String( "accountnumber", "12345" ) );
+        Sdk.Q.retrieveMultiple( query );
     } );
 
 Loading optional messages results in a modified Sdk reference:
 
     define( ["Sdk.RetrieveMetadataChanges"], function( Sdk )
     {
-      Sdk.Mdq !== undefined; // true
+        Sdk.Mdq !== undefined; // true
     } );
