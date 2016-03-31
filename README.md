@@ -4,8 +4,8 @@ This project is a fork of the Microsoft Dynamics CRM Sdk.Soap.js library (https:
 ## Further Improvements
 
 * Allows to set the value of a Lookup Attribute to null, not just to ``Sdk.EntityReference``.
-* Escape illegal XML characters during XML serialization.
-* ``contains`` method of ``Sdk.Collection`` optionally takes a filter predicate function as argument.
+* Escapes illegal XML characters during XML serialization.
+* Extends the ``contains`` function of ``Sdk.Collection`` so taht it optionally takes a filter predicate function as argument.
 * ``Sdk.Collection`` has a new method ``select`` which returns a subset of the items satisfying a predicate function.
 * ``Sdk.Entity`` has a new method ``containsAttribute`` which checks whether the entity has an attribute that satisfies a predicate function.
 
