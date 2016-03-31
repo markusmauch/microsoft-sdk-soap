@@ -1,7 +1,7 @@
 # microsoft-sdk-soap
 This project is a fork of the Microsoft Dynamics CRM Sdk.Soap.js library (https://code.msdn.microsoft.com/SdkSoapjs-9b51b99a).
 
-Improvements include:
+## Improvements
 
 * Support for Universal Module Definition (https://github.com/umdjs/umd).
 * Allows to set the value of a Lookup Attribute to null, not just to ``Sdk.EntityReference``.
@@ -10,4 +10,23 @@ Improvements include:
 * ``Sdk.Collection`` has a new method ``select`` which returns a subset of the items satisfying a predicate function.
 * ``Sdk.Entity`` has a new method ``containsAttribute`` which checks whether the entity has an attribute that satisfies a predicate function.
 
-There is also a TypeScript definition available: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/microsoft-sdk-soap.
+## TypeScript definition
+
+There is a TypeScript definition available: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/microsoft-sdk-soap.
+
+## Usage
+
+    define( ["Sdk"], function( Sdk )
+    {
+      var query = new Sdk.Query.QueryByAttribute( "account" );
+      query.addColumn( "name" );
+      query.addAttributeValue( new Sdk.String( "accountnumber", "12345" ) );
+      Sdk.Q.retrieveMultiple( query );
+    } );
+
+Loading optional messages results in a modified Sdk reference:
+
+    define( ["Sdk.RetrieveMetadataChanges"], function( Sdk )
+    {
+      Sdk.Mdq !== undefined; // true
+    } );
