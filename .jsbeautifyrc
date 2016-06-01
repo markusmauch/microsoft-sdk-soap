@@ -1,0 +1,11 @@
+{
+    "indent_size": 4,
+    "indent_char": " ",
+    "js":
+    {
+        "brace_style": "expand",
+        "space_after_anon_function": false,
+        "space_in_empty_paren": false,
+        "space_in_paren": true
+    }
+}
